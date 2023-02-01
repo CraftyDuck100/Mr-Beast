@@ -124,6 +124,13 @@ public final class Constants {
 
     }
 
+    public static final class Arm {
+        // Arm Motor speeds
+        public static final double shoulderSpeed = -0.1; // Speed for the TalonFX
+        public static final double elbowSpeed = -0.1; // Speed for the First NEO motor/Center arm Motor
+        public static final double wristSpeed = -0.1; // Speed for the Second NEO motor/Final arm motor
+    }
+
     public static final class AutoConstants {
 
         //How fast will the bot go in auto

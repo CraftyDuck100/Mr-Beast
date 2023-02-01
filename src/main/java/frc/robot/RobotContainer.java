@@ -30,11 +30,17 @@ public class RobotContainer {
   private final int strafeAxis = XboxController.Axis.kLeftX.value; //X axis on the left joystick, left to right motion
   private final int rotationAxis = XboxController.Axis.kRightX.value; //X axis on the right joystick, turns the robot
 
-  // Creates button mappings on the controller
+  // Creates button mappings on the controller for the gyro
   private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value); // Y button on the controller to zero the gyro
+
+  // Creates button mappings on the controller for the arm (Most likely to change)
+  private final JoystickButton armextend = new JoystickButton(driver, XboxController.Button.kA.value); // A button on the controller to extend the arm
 
   // Define the Swerve subsystem as swerveSubsystem
   private final Swerve swerveSubsystem = new Swerve();
+
+  // Define the Arm Subsystem as ArmSubsystem
+  private final Arm ArmSubsystem = new Arm 
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -56,6 +62,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     /* Driver Buttons */
     zeroGyro.whenPressed(new InstantCommand(() -> swerveSubsystem.zeroGyro()));
+    extendarm.whenPressed(new InstantCommand(()-> ArmSubsystem.extendarm()));
   }
 
   /**
