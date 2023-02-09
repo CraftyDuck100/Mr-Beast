@@ -31,7 +31,7 @@ public class RobotContainer {
   private final int rotationAxis = XboxController.Axis.kRightX.value; //X axis on the right joystick, turns the robot
 
   // Creates button mappings on the controller
-  private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value); // Y button on the controller to zero the gyro
+  private final JoystickButton Left = new JoystickButton(driver, 1); // Y button on the controller to zero the gyro
 
   // Define the Swerve subsystem as swerveSubsystem
   private final Swerve swerveSubsystem = new Swerve();
