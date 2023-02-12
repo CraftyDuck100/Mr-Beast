@@ -55,7 +55,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     /* Driver Buttons */
-    zeroGyro.whenPressed(new InstantCommand(() -> swerveSubsystem.zeroGyro()));
+    Left.whenPressed(new InstantCommand(() -> swerveSubsystem.zeroGyro()));
   }
 
   /**
