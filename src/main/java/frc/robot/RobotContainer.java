@@ -22,26 +22,20 @@ import frc.robot.subsystems.*;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  // Creates new joystick object for the driver on port 0
-  private final Joystick driver = new Joystick(0);
-
-  // Creates the Axis variables mapped to various joysticks on the gamepad
-  private final int translationAxis = XboxController.Axis.kLeftY.value; //Y axis on left joystick, front to back motion
-  private final int strafeAxis = XboxController.Axis.kLeftX.value; //X axis on the left joystick, left to right motion
-  private final int rotationAxis = XboxController.Axis.kRightX.value; //X axis on the right joystick, turns the robot
-
+  // Creates new HID object for the driver on port 0
+  private final GenericHID driver = new GenericHID(0);
   // Creates button mappings on the controller
-  private final JoystickButton Left = new JoystickButton(driver, 1); // Y button on the controller to zero the gyro
-
+  private final int Left = getRawButton(1);
+  private final int Right = getRawButton(2);
+  private final int Up = getRawButton(3);
+  private final int Down = getRawButton(4);
   // Define the Swerve subsystem as swerveSubsystem
   private final Swerve swerveSubsystem = new Swerve();
-
-
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     boolean fieldRelative = true; // Do you want field oriented control?
     boolean openLoop = true; // Do you want acceleration on the robot
-    swerveSubsystem.setDefaultCommand(new TeleopSwerve(swerveSubsystem, driver, translationAxis, strafeAxis, rotationAxis, fieldRelative, openLoop));  //Default command to drive the bot
+    swerveSubsystem.setDefaultCommand(new TeleopSwerve(swerveSubsystem, driver, Left, Right, Up, Down, fieldRelative, openLoop));  //Default command to drive the bot
 
     // Configure the button bindings
     configureButtonBindings();
@@ -53,10 +47,6 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {
-    /* Driver Buttons */
-    Left.whenPressed(new InstantCommand(() -> swerveSubsystem.zeroGyro()));
-  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
