@@ -22,22 +22,23 @@ public class TeleopSwerve extends CommandBase {
     private int rotationAxis;
 
     //Control Stuff for the driver
-    public TeleopSwerve(Swerve swerveSubsystem, Joystick controller, int translationAxis, int strafeAxis, int rotationAxis, boolean fieldRelative, boolean openLoop) { //Inputs from RobotContainer
+    public TeleopSwerve(Swerve swerveSubsystem, GenericHID controller, int Left, int Right, int Up, int Down, boolean fieldRelative, boolean openLoop) { //Inputs from RobotContainer
         this.swerveSubsystem = swerveSubsystem;
         addRequirements(swerveSubsystem);
 
         //Makes the variables defined earlier equal the values from RobotContainer
         this.controller = controller;
-        this.translationAxis = translationAxis;
-        this.strafeAxis = strafeAxis;
-        this.rotationAxis = rotationAxis;
+        this.Left = Left;
+        this.Right = Right;
+        this.Up = Up;
+        this.Down = Down;
         this.fieldRelative = fieldRelative;
         this.openLoop = openLoop;
     }
 
     @Override
     public void execute() {
-        double yAxis = -controller.getRawAxis(translationAxis) * 0.2;  //Flips the controller values as needed and gets the value of each axis
+        yAxis yAxis = -controller.getRawAxis(translationAxis) * 0.2;  //Flips the controller values as needed and gets the value of each axis
         double xAxis = -controller.getRawAxis(strafeAxis) * 0.2;
         double rAxis = -controller.getRawAxis(rotationAxis);
         
